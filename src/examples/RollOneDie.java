@@ -1,11 +1,13 @@
 package examples;
 
 import java.util.Scanner;
+import java.util.Arrays;
 
 public class RollOneDie {
     private static int rollCount = 0;
 
     public static void main(String[] args) {
+
         System.out.println("Velkommen til spillet, rul en terning.");
         printRules();
         System.out.println();
@@ -28,8 +30,15 @@ public class RollOneDie {
         System.out.print("Rul en terning? ('ja/nej') ");
         String answer = scanner.nextLine();
         while (!answer.equals("nej")) {
-            int face = rollDie();
-            System.out.println("Du rullede: " + face);
+            int[] faces = rollDice();
+            System.out.print("Du rullede: ");
+            for (int j : faces) {
+                while(j==0){
+                    System.out.print(j+" ");
+                }
+                while (j==1);
+                System.out.print(j+" ");
+            }
             System.out.println();
 
             updateStatistics();
@@ -54,6 +63,18 @@ public class RollOneDie {
         System.out.println("\nResults:");
         System.out.println("-------");
         System.out.printf("%17s %4d\n", "Antal rul:", rollCount);
+    }
+    public static int[] rollDice(){
+        int[] slag = new int[2];
+        int terning1 = rollDie();
+        int terning2 = rollDie();
+
+        for (int i = 0; i < slag.length -1 ; i++) {
+            slag[i] = terning1;
+            slag[i+1] = terning2;
+        }
+
+        return slag;
     }
 
 }
