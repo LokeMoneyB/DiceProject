@@ -76,7 +76,6 @@ public class RollTwoDice {
 
     }
 
-
     private static void printStatistics() {
         System.out.println("\nResults:");
         System.out.println("-------");
